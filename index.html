@@ -1,0 +1,113 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projects - Airdrops, Testnets & DePINs</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: #f9f9f9;
+            color: #333;
+        }
+        header {
+            background: #4a90e2;
+            color: white;
+            padding: 1rem;
+            text-align: center;
+        }
+        nav {
+            background: #eee;
+            padding: 1rem;
+            text-align: center;
+        }
+        nav button {
+            margin: 0 0.5rem;
+            padding: 0.5rem 1rem;
+            cursor: pointer;
+        }
+        main {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            padding: 1rem;
+        }
+        .project {
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            padding: 1rem;
+            margin: 1rem;
+            background: white;
+            width: 250px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        .project h3 {
+            margin: 0 0 0.5rem;
+        }
+        .project p {
+            margin: 0.5rem 0;
+        }
+        .project a {
+            display: block;
+            margin-top: 0.5rem;
+            color: #4a90e2;
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Projects</h1>
+        <p>Your dashboard for Airdrops, Testnets & DePINs</p>
+    </header>
+    <nav>
+        <button onclick="filterCategory('all')">All</button>
+        <button onclick="filterCategory('airdrop')">Airdrops</button>
+        <button onclick="filterCategory('testnet')">Testnets</button>
+        <button onclick="filterCategory('depin')">DePINs</button>
+    </nav>
+    <main id="project-list"></main>
+    <script>
+        const projects = [
+            { name: "midas", url: "https://t.me/MidasRWA_bot/app?startapp=ref_b6dba525-ed23-4f60-9c2f-5a38e778d81f", category: "airdrop" },
+            { name: "hipin", url: "https://t.me/hi_PIN_bot/app?startapp=p9PvcwJ", category: "airdrop" },
+            { name: "billions network", url: "https://signup.billions.network?rc=5FKI7KWN", category: "airdrop" },
+            { name: "hot wallet", url: "https://app.hot-labs.org/link?7248204", category: "airdrop" },
+            { name: "oro ai", url: "https://app.getoro.xyz/?referralCode=PKUNM5", category: "airdrop" },
+            { name: "ari wallet", url: "https://play.google.com/store/apps/details?id=arichain.app.ari.wallet", category: "airdrop" },
+            { name: "gradient", url: "https://app.gradient.network/signup?code=I6W4PB", category: "depin" },
+            { name: "Bless", url: "https://bless.network/dashboard?ref=8PIGK6", category: "depin" },
+            { name: "Despeed", url: "https://app.despeed.net/register?ref=N1aLxOczRAJL", category: "depin" },
+            { name: "teneo", url: "https://dashboard.teneo.pro/auth/signup?referralCode=vN5yV", category: "depin" },
+            { name: "blockmesh", url: "https://app.blockmesh.xyz/register?invite_code=18c3de9c-a63b-48ee-a448-e3d1e86ccc36", category: "depin" },
+            { name: "soul labs", url: "https://app.soul.io/?referredBy=34DTJ", category: "testnet" },
+            { name: "union", url: "https://app.union.build/transfer", category: "testnet" },
+            { name: "onefootball", url: "https://ofc.onefootball.com/s2?referral=PrA7OYKLWOD9", category: "testnet" },
+            { name: "humanity protocol", url: "https://testnet.humanity.org/login?ref=ravi1", category: "testnet" },
+            { name: "bytenova", url: "https://bytenova.ai/rewards?invite_code=ENrl6yPoI", category: "testnet" }
+        ];
+
+        function displayProjects(filteredCategory = "all") {
+            const container = document.getElementById("project-list");
+            container.innerHTML = "";
+            projects
+                .filter(p => filteredCategory === "all" || p.category === filteredCategory)
+                .forEach(p => {
+                    const div = document.createElement("div");
+                    div.className = "project";
+                    div.innerHTML = `<h3>${p.name}</h3><p>Category: ${p.category}</p><a href="${p.url}" target="_blank">Visit</a>`;
+                    container.appendChild(div);
+                });
+        }
+
+        function filterCategory(cat) {
+            displayProjects(cat);
+        }
+
+        window.onload = () => displayProjects();
+    </script>
+</body>
+</html>
